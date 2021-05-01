@@ -1,0 +1,67 @@
+--- /dev/null
++++ b/net/minecraft/entity/item/ArmorStandEntityTest.java
+@@ -0,0 +1,64 @@
++package net.minecraft.entity.item;
++
++public class ArmorStandEntityTest {
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja kiíratással, hogy megfelelő helyre lettek-e regisztrálva az elhelyetett armor tartó
++     * Mikor fut le: Amikor elhelyezünk egy új sínt
++     *
++     * @param x x tengely szerint hova helyeztük el az armor tartót
++     * @param y y tengely szerint hova helyeztük el az armor tartót
++     * @param z z tengely szerint hova helyeztük el az armor tartót
++     */
++    //@Test
++    public static void recalculateSizeTest(double x, double y, double z) {
++        System.out.println("ArmorStandEntity.java recalculateSize metodusa szeint itt talalhato az armor stand: x = "+x+", y = "+y+", z = "+z);
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy az armor tartó üres-e vagy fém armor-ral rendelkezik-e
++     * Mikor fut le: Ha a pályán található egy armor tartó, akkor minden tick során
++     *
++     * @param item Item objektum toString metódusának visszatérési értéke
++     */
++    //@Test
++    public static void getItemStackFromSlotTest(String item) {
++        if (item.equals("1 air") || item.equals("1 iron_helmet") || item.equals("1 iron_chestplate") || item.equals("1 iron_leggings") || item.equals("1 iron_boots")) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("ArmorStandEntity.java getItemStackFromSlot metodus valoban fem armorral rendelkezik vagy ures");
++        } else {
++            System.err.println("ArmorStandEntity.java getItemStackFromSlot metodus parametere helytelen ertekkel rendelkezik (kapott parameter = "+item+", helyette valid lenne: 1 air || 1 iron_helmet || 1 iron_chestplate || 1 iron_leggings || 1 iron_boots");
++        }
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy az armor tartó üres-e vagy fém armort kapott-e
++     * Mikor fut le: Amikor egy új item-et kapott az armor tartó
++     *
++     * @param item Item objektum toString metódusának visszatérési értéke
++     */
++    //@Test
++    public static void setItemStackToSlotTest(String item) {
++        if (item.equals("1 air") || item.equals("1 iron_helmet") || item.equals("1 iron_chestplate") || item.equals("1 iron_leggings") || item.equals("1 iron_boots")) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("ArmorStandEntity.java setItemStackToSlot metodus valoban fem armort kapott vagy ures lett");
++        } else {
++            System.err.println("ArmorStandEntity.java setItemStackToSlot metodus parametere helytelen item-et kapott (kapott parameter = "+item+", helyette valid lenne: 1 air || 1 iron_helmet || 1 iron_chestplate || 1 iron_leggings || 1 iron_boots");
++        }
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy az armor tartó minden elemét eldobta-e, ha szét lett ütve
++     * Mikor fut le: Amikor a player szét tört egy armor tartót egyszer.
++     *
++     * @param item Item objektum toString metódusának visszatérési értéke
++     */
++    //@Test
++    public static void func_213816_gTest(String item) {
++        if (item.equals("[1 air, 1 air, 1 air, 1 air]")) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("ArmorStandEntity.java func_213816_g metodus valoban minden elemét sikersen eldobta armot tarto szettorese soran");
++        } else {
++            System.err.println("ArmorStandEntity.java func_213816_g metodus nem dobott el minden elemet, amikor szet tortuk (kapott parameter = "+item+", helyette valid lenne: [1 air, 1 air, 1 air, 1 air]");
++        }
++    }
++}

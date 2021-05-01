@@ -1,0 +1,91 @@
+--- /dev/null
++++ b/net/minecraft/entity/item/minecart/FurnaceMinecartEntityTest.java
+@@ -0,0 +1,88 @@
++package net.minecraft.entity.item.minecart;
++
++public class FurnaceMinecartEntityTest {
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy a furnace minecartot megfelelő sebességel gyosítja-e a tűzelő anyag.
++     * Mikor fut le: Sínen mozgó fűtött furnace minecart esetében tick-enként
++     *
++     * @param pushX x tengely menti gyorsítás a tűzelő anyag által [-1.50, 1.50]
++     * @param pushZ z tengely menti gyorsítás a tűzelő anyag által [-1.50, 1.50]
++     *          Gyorsítás maximum: 1.50 -> két paraméter abszolút értékének összegének [0, 1.50] kell esnie
++     */
++    //@Test
++    public static void tickTest(double pushX, double pushZ) {
++        double MAX_PUSH = 1.50D;
++        double push = Math.abs(pushX) + Math.abs(pushZ);
++
++        if (0.0D <= push && push <= MAX_PUSH) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("FurnaceMinecartEntity.java tick metodus pushX, pushZ parameterei helyes ertekkel rendelkeznek");
++        } else {
++            System.err.println("FurnaceMinecartEntity.java tick metodus pushX, pushZ valtozoi helytelen ertekkel rendelkeznek (2 valtozo abs osszege = "+push+", x = "+pushX+", z = "+pushZ+", maximalas "+MAX_PUSH+" helyett.");
++        }
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy a furnace minecart megfelelő sebességel közlekedik-e.
++     * Mikor fut le: Sínen mozgó furnace minecart esetében tick-enként
++     *
++     * @param pushX x tengely menti gyorsítás [-1.41, 1.41]
++     * @param pushZ z tengely menti gyorsítás [-1.41, 1.41]
++     *          Gyorsítás maximum: 1.41 -> két paraméter abszolút értékének összegének [0, 1.41] kell esnie
++     */
++    //@Test
++    public static void moveAlongTrackTest(double pushX, double pushZ) {
++        double MAX_PUSH = 1.41D;
++        double push = Math.abs(pushX) + Math.abs(pushZ);
++
++        if (0.0D <= push && push <= MAX_PUSH) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("FurnaceMinecartEntity.java moveAlongTrack metodus pushX, pushZ parameterei helyes ertekkel rendelkeznek");
++        } else {
++            System.err.println("FurnaceMinecartEntity.java moveAlongTrack metodus pushX, pushZ valtozoi helytelen ertekkel rendelkeznek (2 valtozo abs osszege = "+push+", x = "+pushX+", z = "+pushZ+", maximalas "+MAX_PUSH+" helyett.");
++        }
++    }
++
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy ha a furnace minecart-ra ha fűtve van, akkor mekkora drag hat rá
++     * Mikor fut le: Sínen mozgó, fütött furnace minecart esetében tick-enként
++     *
++     * @param pushX x tengely menti drag [-1.41, 1.41]
++     * @param pushZ z tengely menti drag [-1.41, 1.41]
++     *          Gyorsítás maximum: 1.41 -> két paraméter abszolút értékének összegének [0, 1.41] kell esnie
++     */
++    //@Test
++    public static void applyDragTest(double pushX, double pushZ) {
++        double MAX_DRAG = 1.41D;
++        double drag = Math.abs(pushX) + Math.abs(pushZ);
++
++        if (0.0D <= drag && drag <= MAX_DRAG) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("FurnaceMinecartEntity.java applyDrag metodus pushX, pushZ parameterei helyes ertekkel rendelkeznek");
++        } else {
++            System.err.println("FurnaceMinecartEntity.java applyDrag metodus pushX, pushZ valtozoi helytelen ertekkel rendelkeznek (2 valtozo abs osszege = "+drag+", x = "+pushX+", z = "+pushZ+", maximalas "+MAX_DRAG+" helyett.");
++        }
++    }
++
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy ha a furnace minecart-ba tettünk fütőanyagot, akkor mekkora kezdő lendületet kap
++     * Mikor fut le: Amikor egy nem fütött furnace minecart-ba fütő anyagot teszünk, akkor kétszer fut le
++     *
++     * @param pushX x tengely menti drag [-4.22, 4.22]
++     * @param pushZ z tengely menti drag [-4.22, 4.22]
++     */
++    //@Test
++    public static void processInitialInteractTest(double pushX, double pushZ) {
++        double MAX_PUSH = 4.22D;
++        double push = Math.abs(pushX) + Math.abs(pushZ);
++
++        if (0.0D <= push && push <= MAX_PUSH) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("FurnaceMinecartEntity.java processInitialInteract metodus pushX, pushZ parameterei helyes ertekkel rendelkeznek");
++        } else {
++            System.err.println("FurnaceMinecartEntity.java processInitialInteract metodus pushX, pushZ valtozoi helytelen ertekkel rendelkeznek (2 valtozo abs osszege = "+push+", x = "+pushX+", z = "+pushZ+", maximalas "+MAX_PUSH+" helyett.");
++        }
++    }
++}

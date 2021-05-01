@@ -1,0 +1,99 @@
+--- /dev/null
++++ b/net/minecraft/entity/item/minecart/AbstractMinecartEntityTest.java
+@@ -0,0 +1,96 @@
++package net.minecraft.entity.item.minecart;
++
++public class AbstractMinecartEntityTest {
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy a kisiklott minecart sebessége valid értékkel rendelkezik-e.
++     * Mikor fut le: Kisikklott minecart esetében minden tick során lefut.
++     * Mikor változhat egy kisiklott minecrart sebessége akkor változhat:
++     *      a) Egy enititás (player/mob) elkezdi a földön tolni
++     *      b) Levegőben zuhan a minecart
++     *
++     * @param speed Mindig pozitív szám, amelynek valid értéke [0, 0.41]-be esik
++     */
++    //@Test
++    public static void moveDerailedMinecartTest(double speed) {
++        double MAX_SPEED = 0.41D;
++
++        if (0.0D <= speed && speed <= MAX_SPEED) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("AbstractMinecartEntity.java moveDerailedMinecart metodus d0 valtozoja helyes ertekkel rendelkezik");
++        } else {
++            System.err.println("AbstractMinecartEntity.java moveDerailedMinecart metodus d0 valtozoja helytelen ertekkel rendelkezik (d0 = "+speed+" maximalas "+MAX_SPEED+" helyett.");
++        }
++    }
++
++
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, amikor egy sínen lévő minecart valid sebességet/lendületet kap-e.
++     * Mikor fut le: Minden esetben, amikor egy minecart lendületre tesz szert.
++     * Mikor tehet egy minecart sebességre szert:
++     *      a) Egy entitás (player/mob) a sínen kezdi el tolni a minecart-ot.
++     *      b) Powered rail által kap sebességet
++     *      c) Lejtőn lefele megy a minecart
++     *      c) Szénnel vagy egyéb tűzelő anyaggal indítunk el egy furnace minecartot.
++     *
++     * @param x x tengely menti elmozdulás sebessége [-2.5, 2.5]
++     * @param y y tengely menti elmozdulás sebessége [-2.5, 2.5]
++     * @param z z tengely menti elmozdulás sebessége [-2.5, 2.5]
++     *          Elmozulás maximum: 2.5 -> három paraméter abszolút értékének összegének [0, 2.5] kell esnie
++     */
++    //@Test
++    public static void setVelocityTest(double x, double y, double z) {
++        double MAX_VELOCITY = 2.5D;
++        double velocity = Math.abs(x) + Math.abs(y) + Math.abs(z);
++
++        if (0.0D <= velocity && velocity <= MAX_VELOCITY) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("AbstractMinecartEntity.java setVelocity metodus x, y, z parameterei helyes ertekkel rendelkeznek");
++        } else {
++            System.err.println("AbstractMinecartEntity.java setVelocity metodus x, y, z valtozoja helytelen ertekkel rendelkezik (3 valtozo abs összege = "+velocity+", x = "+x+", y = "+y+", z = "+z+", maximalas "+MAX_VELOCITY+" helyett.");
++        }
++    }
++
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, amikor egy sínen lévő minecartnak valid-e az elmozdulás vektorja.
++     * Mikor fut le: Sínen mozgó minecart esetében tick-enként
++     *
++     * @param x x tengely menti elmozdulás [-2.1, 2.1]
++     * @param y y tengely menti elmozdulás [-2.1, 2.1]
++     * @param z z tengely menti elmozdulás [-2.1, 2.1]
++     *          Elmozulás maximum: 2.1 -> három paraméter abszolút értékének összegének [0, 2.1] kell esnie
++     */
++    //@Test
++    public static void moveMinecartOnRailTest(double x, double y, double z) {
++        double MAX_MOVE = 2.1D;
++        double move = Math.abs(x) + Math.abs(y) + Math.abs(z);
++
++        if (0.0D <= move && move <= MAX_MOVE) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("AbstractMinecartEntity.java moveMinecartOnRailTest metodus x, y, z parameterei helyes ertekkel rendelkeznek");
++        } else {
++            System.err.println("AbstractMinecartEntity.java moveMinecartOnRailTest metodus x, y, z valtozoja helytelen ertekkel rendelkezik (3 valtozo abs osszege = "+move+", x = "+x+", y = "+y+", z = "+z+", maximalas "+MAX_MOVE+" helyett.");
++        }
++    }
++
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, minecart valid player sebzes eseten esett-e szet.
++     * Mikor fut le: Amikor egy minecart annyi sebzést kapott egy jatekos utesetol, hogy szet essen.
++     *
++     * @param damage palayer által ütött sebzés [40.0, 65.0] vagy kreatív módban van a játékos
++     */
++    //@Test
++    public static void attackEntityFromTest(float damage, boolean creative) {
++        float MAX_DAMAGE = 65.0F;
++
++        if ((40.0F < damage && damage <= MAX_DAMAGE) || creative) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("AbstractMinecartEntity.java attackEntityFromTest metodus dmg parametere helyes ertekkel rendelkezik");
++        } else {
++            System.err.println("AbstractMinecartEntity.java attackEntityFromTest metodus dmg valtozoja helytelen ertekkel rendelkezik (dmg = "+damage+", maximalas "+MAX_DAMAGE+" helyett.");
++        }
++    }
++}
++

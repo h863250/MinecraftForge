@@ -1,0 +1,91 @@
+--- /dev/null
++++ b/net/minecraft/entity/item/BoatEntityTest.java
+@@ -0,0 +1,88 @@
++package net.minecraft.entity.item;
++
++public class BoatEntityTest {
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy a csónak vízben van-e
++     * Mikor fut le: Ha létrehoztunk egy csónakot, akkor minden tick során
++     *
++     * @param water vízben van-e
++     */
++    //@Test
++    public static void checkInWaterTest(boolean water) {
++        if (water) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("BoatEntity.java checkInWater metodus szerint a csonak vízben van");
++        } else {
++            System.err.println("BoatEntity.java checkInWater metodus szerint a csonak nincs vízben");
++        }
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy ha a csónak van, akkor megfelelő momentum értékkel rendelkezik-e.
++     * Mikor fut le: Ha létrehoztunk egy csónakot, akkor minden tick során
++     *
++     * @param monentum Lendület ha vízben van, akkor [0.59, 0.90] intervallumba esik
++     */
++    //@Test
++    public static void updateMotionTest(float monentum) {
++        float MAX_MOMENTUM = 0.90F;
++
++        if (0.59F <= monentum && monentum <= MAX_MOMENTUM) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("BoatEntity.java updateMotionTest metodusban a csonak megfelelo momentummal rendelkezik");
++        } else {
++            System.err.println("BoatEntity.java updateMotionTest metodus szerint a csonak nem megfelelo momentummal rendelkezik (kapott momentum = "+monentum+" a vart = [0.59, 0.90] helyett");
++        }
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy ha a csónak iranyitas megfelelő értékkel történik-e
++     * Mikor fut le: Ha létrehoztunk egy csónakot, akkor minden tick során
++     *
++     * @param control Lendület ha vízben van, akkor [-0.04, 0.04] intervallumba esik
++     */
++    //@Test
++    public static void controlBoatTest(float control) {
++        if (-0.04F <= control && control <= 0.04F) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("BoatEntity.java controlBoat metodusban a csonak megfelelo control rendelkezik");
++        } else {
++            System.err.println("BoatEntity.java controlBoat metodus szerint a csonak nem megfelelo control rendelkezik (kapott control = "+control+" a vart = [-0.005, 0.005] helyett");
++        }
++    }
++
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy hajóban üllve megfelelő gomblenyomást érzékelt-e a játék
++     * Mikor fut le: Ha egy csónakban üllünk, akkor minden irányitó gomblenyomás esetén
++     *
++     * @param leftInputDown balra gombot nyomtuk-e meg
++     * @param rightInputDown jobbra gombot nyomtuk-e meg
++     * @param forwardInputDown előre gombot nyomtuk-e meg
++     * @param backInputDown vissza gombot nyomtuk-e meg
++     */
++    //@Test
++    public static void updateInputsTest(boolean leftInputDown, boolean rightInputDown, boolean forwardInputDown, boolean backInputDown) {
++        if (leftInputDown) System.out.println("BoatEntity.java updateInputs metodus szerint lenyomott gomb: balra");
++        else if (rightInputDown) System.out.println("BoatEntity.java updateInputs metodus szerint lenyomott gomb: jobbra");
++        else if (forwardInputDown) System.out.println("BoatEntity.java updateInputs metodus szerint lenyomott gomb: elore");
++        else if (backInputDown) System.out.println("BoatEntity.java updateInputs metodus szerint lenyomott gomb: hatra");
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy hajóban a 'Dev' játékos található-e
++     * Mikor fut le: Ha egy csónakban üll valaki, akkor minden tick során
++     *
++     * @param passanger balra gombot nyomtuk-e meg
++     */
++    //@Test
++    public static void updatePassengerTest(String passanger) {
++        if (passanger.indexOf("Dev") != -1) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("BoatEntity.java updatePassenger metodusban a csonakban megfelelo passanger talalhato");
++        } else {
++            System.err.println("BoatEntity.java updatePassenger metodus szerint a csonakban nem megfelelo passanger talalhato (helyette kapott passanger = "+passanger);
++        }
++    }
++}

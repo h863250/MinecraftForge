@@ -1,0 +1,49 @@
+--- /dev/null
++++ b/net/minecraft/block/RailStateTest.java
+@@ -0,0 +1,46 @@
++package net.minecraft.block;
++
++public class RailStateTest {
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja, hogy a sínnek valóban van-e szomszédja
++     * Mikor fut le: Amikor két sínt helyezünk el egymás mellé
++     *
++     * @param size van-e szomszedja (helyes érték 2 vagy nagyobb)
++     */
++    //@Test
++    public static void checkConnectedTest(int size) {
++        if (2 <= size) {
++            // Nem íratjuk ki, mert: a) Nem akarjuk szét spam-elni a terminált több ezer "felesleges kiíratással" b) Elvárt működést "felseleges" kiírni (nem kaptunk hibát -> jól működik)
++            //System.out.println("RailState.java checkConnected metodus size parametere helyes ertekkel rendelkezik");
++        } else {
++            System.err.println("RailState.java checkConnected metodus size parametere helytelen ertekkel rendelkezik (size = "+size+", legalabb 2 helyett.");
++        }
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja kiíratással, hogy megfelelő helyre lettek-e regisztrálva a sínek
++     * Mikor fut le: Amikor leteszünk egy sínt
++     *
++     * @param x x tengely szerint hova helyeztük el a sínt
++     * @param y y tengely szerint hova helyeztük el a sínt
++     * @param z z tengely szerint hova helyeztük el a sínt
++     */
++    //@Test
++    public static void placeRailTest(int x, int y, int z) {
++        System.out.println("RailState.java placeRail metódusa szerint ide helyeztünk le egy sint: x = "+x+", y = "+y+", z = "+z);
++    }
++
++    /**
++     * Mit vizsgál: Ez a "unit test" azt vizsgálja kiíratással, hogy az elhelyezet sín jó szomszédokkal van-e összeköttetésben
++     * Mikor fut le: Amikor leteszünk egy sínt, legalább egy másik sín közvetlen szomszédságába
++     *
++     * @param x x tengely szerint hova helyeztük el a sínt
++     * @param y y tengely szerint hova helyeztük el a sínt
++     * @param z z tengely szerint hova helyeztük el a sínt
++     */
++    //@Test
++    public static void connectTest(int x, int y, int z) {
++        System.out.println("RailState.java connect metodusa itt szomszedos sinek talalhatoak, amelyekkel osszekottesben van: x = "+x+", y = "+y+", z = "+z);
++    }
++}
